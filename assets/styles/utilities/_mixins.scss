@@ -17,11 +17,17 @@ $base-size: 16;
 // display properties
 $b: block;
 $f: flex;
+$n: none;
 @mixin display($prop) {
   display: $prop;
 }
 
-// margin
+// margin-top
+@mixin mt($size) {
+  margin-top: toRem($size);
+}
+
+// margin-bottom
 @mixin mb($size) {
   margin-bottom: toRem($size);
 }

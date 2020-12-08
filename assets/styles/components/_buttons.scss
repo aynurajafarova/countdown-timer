@@ -1,22 +1,46 @@
+%delete-countdown-btns {
+  i {
+    font-size: toRem(20);
+    color: $text-color;
+  }
+}
+
 #openModal {
   border: toRem(4) solid $btn-color;
   width: toRem(60);
   height: toRem(60);
   border-radius: 50%;
-  box-shadow: 0 0 6px $btn-color;
   background-color: #fff;
   position: fixed;
   right: toRem(30);
   bottom: toRem(30);
-  transition: 0.5s;
+  transition: 0.8s ease;
   .icon-calendar-plus-regular {
     font-size: toRem(25);
     color: $btn-color;
   }
   &:hover {
-    background-color: $btn-color;
+    background: $gradient;
     .icon-calendar-plus-regular {
       color: #fff;
     }
+  }
+}
+
+.buttons {
+  transition: 0.3s;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 65%;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #ffffff;
+  opacity: 0;
+  z-index: 222;
+  .delete-btn,
+  .countdown-btn {
+    @extend %delete-countdown-btns;
   }
 }

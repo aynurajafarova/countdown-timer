@@ -1,14 +1,17 @@
 .event-list-item {
   width: 22%;
-  height: toRem(100);
+  min-height: toRem(150);
   box-sizing: border-box;
   @include pad(toRem(15), toRem(10), toRem(15), toRem(10));
   position: relative;
-  background-color: #fff;
+  background-color: $body-color;
+  color: #fff;
   background-clip: padding-box;
-  border: 3px solid transparent;
+  border: toRem(3) solid transparent;
   border-radius: toRem(10);
   margin: toRem(20) toRem(10);
+  transition: 0.3s;
+  cursor: pointer;
   &:before {
     content: "";
     position: absolute;
@@ -17,18 +20,51 @@
     bottom: 0;
     left: 0;
     z-index: -1;
-    margin: -3px;
+    margin: toRem(-3);
     border-radius: inherit;
-    background: linear-gradient(to right, #743ad5, #e499c8);
+    background: $gradient;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 111;
+    // background: linear-gradient(
+    //   to right,
+    //   rgba(116, 58, 213, 0.9),
+    //   rgba(213, 58, 157, 0.9)
+    // );
+    background: $gradient;
+    border-radius: inherit;
+    opacity: 0;
   }
   .name {
     @include display($b);
     font-size: toRem(24);
-    @include mb(15);
+    @include mb(20);
+    @include mt(20);
+    text-align: center;
   }
   .date {
+    width: 50%;
     @include display($b);
     font-size: toRem(14);
     line-height: 1.2;
+    text-align: center;
+    margin: 0 auto;
+  }
+  &:hover {
+    &:after {
+      opacity: 1;
+      transition: 0.2s linear;
+    }
+    .buttons {
+      opacity: 1;
+      transform: translateY(-75%);
+      transition: 0.4s linear;
+    }
   }
 }

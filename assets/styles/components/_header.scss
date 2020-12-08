@@ -2,6 +2,6 @@ header {
   text-align: center;
   font-size: toRem(32);
   @include pad(toRem(15), toRem(0), toRem(15), toRem(0));
-  color: $text-color;
+  color: #fff;
   font-weight: 700;
 }

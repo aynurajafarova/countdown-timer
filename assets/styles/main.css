@@ -123,13 +123,14 @@ table {
 
 body {
   font-family: "Nunito Sans", sans-serif;
-  background-color: #f3eaea;
+  background-color: #241d33;
   color: #241d33; }
 
 button {
   border: none;
   outline: none;
-  cursor: pointer; }
+  cursor: pointer;
+  background: transparent; }
 
 .container {
   width: 90%;
@@ -139,29 +140,48 @@ header {
   text-align: center;
   font-size: 2rem;
   padding: 0.9375rem 0rem 0.9375rem 0rem;
-  color: #241d33;
+  color: #fff;
   font-weight: 700; }
+
+.buttons .delete-btn i,
+.buttons .countdown-btn i {
+  font-size: 1.25rem;
+  color: #241d33; }
 
 #openModal {
   border: 0.25rem solid #241d33;
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 50%;
-  -webkit-box-shadow: 0 0 6px #241d33;
-          box-shadow: 0 0 6px #241d33;
   background-color: #fff;
   position: fixed;
   right: 1.875rem;
   bottom: 1.875rem;
-  -webkit-transition: 0.5s;
-  transition: 0.5s; }
+  -webkit-transition: 0.8s ease;
+  transition: 0.8s ease; }
   #openModal .icon-calendar-plus-regular {
     font-size: 1.5625rem;
     color: #241d33; }
   #openModal:hover {
-    background-color: #241d33; }
+    background: -webkit-gradient(linear, left top, right top, from(#743ad5), to(#d53a9d));
+    background: linear-gradient(to right, #743ad5, #d53a9d); }
     #openModal:hover .icon-calendar-plus-regular {
       color: #fff; }
+
+.buttons {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 65%;
+  text-align: center;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #ffffff;
+  opacity: 0;
+  z-index: 222; }
 
 .add-event-form {
   background-color: #fefefe;
@@ -205,16 +225,20 @@ header {
 
 .event-list-item {
   width: 22%;
-  height: 6.25rem;
+  min-height: 9.375rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0.9375rem 0.625rem 0.9375rem 0.625rem;
   position: relative;
-  background-color: #fff;
+  background-color: #241d33;
+  color: #fff;
   background-clip: padding-box;
-  border: 3px solid transparent;
+  border: 0.1875rem solid transparent;
   border-radius: 0.625rem;
-  margin: 1.25rem 0.625rem; }
+  margin: 1.25rem 0.625rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer; }
   .event-list-item:before {
     content: "";
     position: absolute;
@@ -223,17 +247,44 @@ header {
     bottom: 0;
     left: 0;
     z-index: -1;
-    margin: -3px;
+    margin: -0.1875rem;
     border-radius: inherit;
-    background: -webkit-gradient(linear, left top, right top, from(#743ad5), to(#e499c8));
-    background: linear-gradient(to right, #743ad5, #e499c8); }
+    background: -webkit-gradient(linear, left top, right top, from(#743ad5), to(#d53a9d));
+    background: linear-gradient(to right, #743ad5, #d53a9d); }
+  .event-list-item:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 111;
+    background: -webkit-gradient(linear, left top, right top, from(#743ad5), to(#d53a9d));
+    background: linear-gradient(to right, #743ad5, #d53a9d);
+    border-radius: inherit;
+    opacity: 0; }
   .event-list-item .name {
     display: block;
     font-size: 1.5rem;
-    margin-bottom: 0.9375rem; }
+    margin-bottom: 1.25rem;
+    margin-top: 1.25rem;
+    text-align: center; }
   .event-list-item .date {
+    width: 50%;
     display: block;
     font-size: 0.875rem;
-    line-height: 1.2; }
+    line-height: 1.2;
+    text-align: center;
+    margin: 0 auto; }
+  .event-list-item:hover:after {
+    opacity: 1;
+    -webkit-transition: 0.2s linear;
+    transition: 0.2s linear; }
+  .event-list-item:hover .buttons {
+    opacity: 1;
+    -webkit-transform: translateY(-75%);
+            transform: translateY(-75%);
+    -webkit-transition: 0.4s linear;
+    transition: 0.4s linear; }
 
 /*# sourceMappingURL=main.css.map */

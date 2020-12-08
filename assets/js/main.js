@@ -3,7 +3,7 @@ const eventName = document.querySelector(".event-name-input");
 const addEventBtn = document.getElementById("addEvent");
 const eventsList = document.querySelector(".events-list");
 
-const events = [];
+let events = [];
 let id = 1;
 
 // calculate date
@@ -99,6 +99,10 @@ const addEvent = () => {
   events.push(newEvent);
 };
 
+const deleteEvent = (id) => {
+  events = events.filter((item, index) => item.id != id);
+};
+
 const addEventItem = (item) => {
   const { id, date, name } = item;
   const eventListItem = document.createElement("li");
@@ -110,12 +114,41 @@ const addEventItem = (item) => {
   const eventName = document.createElement("span");
   eventName.className = "name";
 
+  // delete eventbtn
+  const divBtns = document.createElement("div");
+  divBtns.className = "buttons";
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.className = "delete-btn";
+  deleteBtn.title = "Remove";
+  const deleteIcon = document.createElement("i");
+  deleteIcon.className = "icon-trash-alt-regular";
+
+  deleteBtn.addEventListener("click", () => {
+    deleteEvent(id);
+    showEventsList();
+  });
+
+  // start countdown btn
+  const countdownBtn = document.createElement("button");
+  countdownBtn.className = "countdown-btn";
+  countdownBtn.title = "Start countdown";
+  const countdownIcon = document.createElement("i");
+  countdownIcon.className = "icon-calendar-alt-regular";
+
   eventListItem.id = id;
   eventDate.textContent = date;
   eventName.textContent = name;
 
+  deleteBtn.appendChild(deleteIcon);
+  countdownBtn.appendChild(countdownIcon);
+
+  divBtns.appendChild(countdownBtn);
+  divBtns.appendChild(deleteBtn);
+
   eventListItem.appendChild(eventName);
   eventListItem.appendChild(eventDate);
+  eventListItem.appendChild(divBtns);
 
   eventsList.appendChild(eventListItem);
 };
