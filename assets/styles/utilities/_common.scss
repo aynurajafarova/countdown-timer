@@ -1,3 +1,15 @@
 body {
   font-family: "Nunito Sans", sans-serif;
+  background-color: $body-color;
+  color: $text-color;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.container {
+  width: 90%;
+  margin: 0 auto;
 }

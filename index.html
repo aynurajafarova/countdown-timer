@@ -5,21 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Countdown Timer</title>
     <link rel="stylesheet" href="./assets/fonts/stylesheet.css" />
+    <link rel="stylesheet" href="./assets/icons/style.css" />
     <link rel="stylesheet" href="./assets/styles/main.css" />
   </head>
   <body>
-    <div class="add-event-modal">
-      <form class="add-event-form">
-        <input type="text" class="event-name-input" placeholder="Event name" />
-        <input type="datetime-local" class="datepicker" />
-        <button id="addEvent">add</button>
-      </form>
-      <button id="closeModal">x</button>
-    </div>
-    <div>
-      <button id="openModal">+</button>
-    </div>
-    <div class="container"></div>
+    <main>
+      <header>
+        <h1>Events</h1>
+      </header>
+      <div class="modal">
+        <form class="add-event-form">
+          <input
+            type="text"
+            class="event-name-input"
+            placeholder="Event name"
+          />
+          <input type="datetime-local" class="datepicker" />
+          <button id="addEvent">Add</button>
+        </form>
+        <button id="closeModal">x</button>
+      </div>
+      <button id="openModal"><i class="icon-calendar-plus-regular"></i></button>
+      <div class="container">
+        <ul class="events-list"></ul>
+      </div>
+    </main>
     <script src="./assets/js/main.js"></script>
   </body>
 </html>

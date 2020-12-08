@@ -1,0 +1,34 @@
+.event-list-item {
+  width: 22%;
+  height: toRem(100);
+  box-sizing: border-box;
+  @include pad(toRem(15), toRem(10), toRem(15), toRem(10));
+  position: relative;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-radius: toRem(10);
+  margin: toRem(20) toRem(10);
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -3px;
+    border-radius: inherit;
+    background: linear-gradient(to right, #743ad5, #e499c8);
+  }
+  .name {
+    @include display($b);
+    font-size: toRem(24);
+    @include mb(15);
+  }
+  .date {
+    @include display($b);
+    font-size: toRem(14);
+    line-height: 1.2;
+  }
+}

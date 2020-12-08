@@ -122,7 +122,46 @@ table {
   border-spacing: 0; }
 
 body {
-  font-family: "Nunito Sans", sans-serif; }
+  font-family: "Nunito Sans", sans-serif;
+  background-color: #f3eaea;
+  color: #241d33; }
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer; }
+
+.container {
+  width: 90%;
+  margin: 0 auto; }
+
+header {
+  text-align: center;
+  font-size: 2rem;
+  padding: 0.9375rem 0rem 0.9375rem 0rem;
+  color: #241d33;
+  font-weight: 700; }
+
+#openModal {
+  border: 0.25rem solid #241d33;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 0 6px #241d33;
+          box-shadow: 0 0 6px #241d33;
+  background-color: #fff;
+  position: fixed;
+  right: 1.875rem;
+  bottom: 1.875rem;
+  -webkit-transition: 0.5s;
+  transition: 0.5s; }
+  #openModal .icon-calendar-plus-regular {
+    font-size: 1.5625rem;
+    color: #241d33; }
+  #openModal:hover {
+    background-color: #241d33; }
+    #openModal:hover .icon-calendar-plus-regular {
+      color: #fff; }
 
 .add-event-form {
   background-color: #fefefe;
@@ -131,36 +170,70 @@ body {
   border: 1px solid #888;
   width: 80%; }
 
-.add-event-modal #closeModal:hover, .add-event-modal #closeModal:focus {
+.modal #closeModal:hover, .modal #closeModal:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer; }
 
-.add-event-modal {
+.modal {
   display: none;
-  /* Hidden by default */
   position: fixed;
-  /* Stay in place */
   z-index: 1;
-  /* Sit on top */
   padding-top: 100px;
-  /* Location of the box */
   left: 0;
   top: 0;
   width: 100%;
-  /* Full width */
   height: 100%;
-  /* Full height */
   overflow: auto;
-  /* Enable scroll if needed */
   background-color: black;
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */ }
-  .add-event-modal #closeModal {
+  background-color: rgba(0, 0, 0, 0.4); }
+  .modal #closeModal {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold; }
+
+.modal.active {
+  display: block; }
+
+.events-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+.event-list-item {
+  width: 22%;
+  height: 6.25rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0.9375rem 0.625rem 0.9375rem 0.625rem;
+  position: relative;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-radius: 0.625rem;
+  margin: 1.25rem 0.625rem; }
+  .event-list-item:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -3px;
+    border-radius: inherit;
+    background: -webkit-gradient(linear, left top, right top, from(#743ad5), to(#e499c8));
+    background: linear-gradient(to right, #743ad5, #e499c8); }
+  .event-list-item .name {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 0.9375rem; }
+  .event-list-item .date {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 1.2; }
 
 /*# sourceMappingURL=main.css.map */

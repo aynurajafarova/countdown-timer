@@ -1,7 +1,7 @@
 const datepicker = document.querySelector(".datepicker");
 const eventName = document.querySelector(".event-name-input");
-const btn = document.querySelector("button");
-const divContainer = document.querySelector(".container");
+const addEventBtn = document.getElementById("addEvent");
+const eventsList = document.querySelector(".events-list");
 
 const events = [];
 let id = 1;
@@ -101,17 +101,27 @@ const addEvent = () => {
 
 const addEventItem = (item) => {
   const { id, date, name } = item;
-  const dateItem = document.createElement("p");
-  const eventName = document.createElement("P");
-  dateItem.textContent = date;
-  dateItem.id = id;
+  const eventListItem = document.createElement("li");
+  eventListItem.className = "event-list-item";
+
+  const eventDate = document.createElement("span");
+  eventDate.className = "date";
+
+  const eventName = document.createElement("span");
+  eventName.className = "name";
+
+  eventListItem.id = id;
+  eventDate.textContent = date;
   eventName.textContent = name;
-  divContainer.appendChild(eventName);
-  divContainer.appendChild(dateItem);
+
+  eventListItem.appendChild(eventName);
+  eventListItem.appendChild(eventDate);
+
+  eventsList.appendChild(eventListItem);
 };
 
 const showEventsList = () => {
-  divContainer.textContent = "";
+  eventsList.textContent = "";
   events.forEach((date) => {
     addEventItem(date);
   });
@@ -119,32 +129,32 @@ const showEventsList = () => {
 
 showEventsList();
 
-btn.addEventListener("click", (e) => {
+addEventBtn.addEventListener("click", (e) => {
   e.preventDefault();
   addEvent();
   showEventsList();
   datepicker.value = "";
   eventName.value = "";
-  modal.style.display = "none";
+  modal.classList.remove("active");
 });
 
 // add event modal
-const modal = document.querySelector(".add-event-modal");
+const modal = document.querySelector(".modal");
 const openModal = document.getElementById("openModal");
 const closeModal = document.getElementById("closeModal");
 
 openModal.addEventListener("click", () => {
-  modal.style.display = "block";
+  modal.classList.add("active");
   eventName.focus();
 });
 
 closeModal.addEventListener("click", () => {
-  modal.style.display = "none";
+  modal.classList.remove("active");
 });
 
 // when the user clicks anywhere outside of the modal
 window.onclick = function (event) {
   if (event.target == modal) {
-    modal.style.display = "none";
+    modal.classList.remove("active");
   }
 };

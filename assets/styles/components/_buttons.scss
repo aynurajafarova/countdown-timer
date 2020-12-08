@@ -1,0 +1,22 @@
+#openModal {
+  border: toRem(4) solid $btn-color;
+  width: toRem(60);
+  height: toRem(60);
+  border-radius: 50%;
+  box-shadow: 0 0 6px $btn-color;
+  background-color: #fff;
+  position: fixed;
+  right: toRem(30);
+  bottom: toRem(30);
+  transition: 0.5s;
+  .icon-calendar-plus-regular {
+    font-size: toRem(25);
+    color: $btn-color;
+  }
+  &:hover {
+    background-color: $btn-color;
+    .icon-calendar-plus-regular {
+      color: #fff;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@mixin pad($top, $right, $bottom, $left) {
+  padding: $top $right $bottom $left;
+}
+
+// convert px to rem
+$base-size: 16;
+@function toRem($size) {
+  @return ($size / $base-size) * 1rem;
+}
+
+@mixin centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// display properties
+$b: block;
+$f: flex;
+@mixin display($prop) {
+  display: $prop;
+}
+
+// margin
+@mixin mb($size) {
+  margin-bottom: toRem($size);
+}
