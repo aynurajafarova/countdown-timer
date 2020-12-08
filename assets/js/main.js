@@ -1,13 +1,14 @@
-const input = document.querySelector("input");
+const datepicker = document.querySelector(".datepicker");
+const eventName = document.querySelector(".event-name-input");
 const btn = document.querySelector("button");
 const divContainer = document.querySelector(".container");
 
-const dates = [];
+const events = [];
 let id = 1;
 
 // calculate date
-const showDate = () => {
-  let dateInput = input.value && new Date(input.value);
+const showDateAze = () => {
+  let dateInput = datepicker.value && new Date(datepicker.value);
   let hours = dateInput.getHours();
   let minutes = dateInput.getMinutes();
   const date = dateInput.getDate();
@@ -48,36 +49,102 @@ const showDate = () => {
   } ${hours}: ${minutes}`;
 };
 
-const addDate = () => {
-  const newDate = {
-    id: id++,
-    text: showDate(),
-  };
-  dates.push(newDate);
+const showDate = () => {
+  let dateInput = datepicker.value && new Date(datepicker.value);
+  let hours = dateInput.getHours();
+  let minutes = dateInput.getMinutes();
+  const date = dateInput.getDate();
+  const year = dateInput.getFullYear();
+  const month = dateInput.getMonth();
+  let weekday = dateInput.getDay();
+
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  hours = hours < 10 ? "0" + hours : hours;
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return `${date} ${months[month]} ${year}, ${days[weekday]}, ${hours}:${minutes}`;
 };
 
-const addDateItem = (date) => {
-  const { id, text } = date;
-  const dateItem = document.createElement("p");
-  dateItem.textContent = text;
-  dateItem.id = id;
+const addEvent = () => {
+  const newEvent = {
+    id: id++,
+    // date: showDateAze(),
+    date: showDate(),
+    name: eventName.value,
+  };
+  events.push(newEvent);
+};
 
+const addEventItem = (item) => {
+  const { id, date, name } = item;
+  const dateItem = document.createElement("p");
+  const eventName = document.createElement("P");
+  dateItem.textContent = date;
+  dateItem.id = id;
+  eventName.textContent = name;
+  divContainer.appendChild(eventName);
   divContainer.appendChild(dateItem);
 };
 
-const showDatesList = () => {
+const showEventsList = () => {
   divContainer.textContent = "";
-  dates.forEach((date) => {
-    addDateItem(date);
+  events.forEach((date) => {
+    addEventItem(date);
   });
 };
 
-showDatesList();
+showEventsList();
 
 btn.addEventListener("click", (e) => {
   e.preventDefault();
-  addDate();
-  showDatesList();
-  input.value = ""; 
-//   input.focus()
+  addEvent();
+  showEventsList();
+  datepicker.value = "";
+  eventName.value = "";
+  modal.style.display = "none";
 });
+
+// add event modal
+const modal = document.querySelector(".add-event-modal");
+const openModal = document.getElementById("openModal");
+const closeModal = document.getElementById("closeModal");
+
+openModal.addEventListener("click", () => {
+  modal.style.display = "block";
+  eventName.focus();
+});
+
+closeModal.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// when the user clicks anywhere outside of the modal
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
