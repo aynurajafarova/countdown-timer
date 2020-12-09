@@ -1,7 +1,7 @@
 header {
   text-align: center;
   font-size: toRem(32);
-  @include pad(toRem(15), toRem(0), toRem(15), toRem(0));
+  @include pad(toRem(30), toRem(0), toRem(20), toRem(0));
   color: #fff;
   font-weight: 700;
 }

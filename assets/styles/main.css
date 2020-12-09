@@ -136,10 +136,14 @@ button {
   width: 90%;
   margin: 0 auto; }
 
+input {
+  border: none;
+  outline: none; }
+
 header {
   text-align: center;
   font-size: 2rem;
-  padding: 0.9375rem 0rem 0.9375rem 0rem;
+  padding: 1.875rem 0rem 1.25rem 0rem;
   color: #fff;
   font-weight: 700; }
 
@@ -148,25 +152,26 @@ header {
   font-size: 1.25rem;
   color: #241d33; }
 
-#openModal {
+.btn {
   border: 0.25rem solid #241d33;
+  background-color: #fff;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  color: #241d33; }
+  .btn:hover {
+    color: #fff;
+    background: -webkit-gradient(linear, left top, right top, from(#743ad5), to(#d53a9d));
+    background: linear-gradient(to right, #743ad5, #d53a9d); }
+
+.open-modal {
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 50%;
-  background-color: #fff;
   position: fixed;
   right: 1.875rem;
-  bottom: 1.875rem;
-  -webkit-transition: 0.8s ease;
-  transition: 0.8s ease; }
-  #openModal .icon-calendar-plus-regular {
-    font-size: 1.5625rem;
-    color: #241d33; }
-  #openModal:hover {
-    background: -webkit-gradient(linear, left top, right top, from(#743ad5), to(#d53a9d));
-    background: linear-gradient(to right, #743ad5, #d53a9d); }
-    #openModal:hover .icon-calendar-plus-regular {
-      color: #fff; }
+  bottom: 1.875rem; }
+  .open-modal .icon-calendar-plus-regular {
+    font-size: 1.5625rem; }
 
 .buttons {
   -webkit-transition: 0.3s;
@@ -176,7 +181,7 @@ header {
   right: 0;
   top: 65%;
   text-align: center;
-  padding: 20px;
+  padding: 1.25rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: #ffffff;
@@ -184,37 +189,63 @@ header {
   z-index: 222; }
 
 .add-event-form {
-  background-color: #fefefe;
   margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; }
-
-.modal #closeModal:hover, .modal #closeModal:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer; }
+  padding-bottom: 6.25rem;
+  width: 50%; }
+  .add-event-form .event-name-input {
+    width: 40%;
+    padding: 0.625rem;
+    border-radius: 0.3125rem;
+    margin-right: 0.625rem; }
+  .add-event-form .datepicker {
+    width: 30%;
+    padding: 0.4375rem;
+    border-radius: 0.3125rem;
+    color: #241d33;
+    margin-right: 0.625rem; }
+  .add-event-form .add-event {
+    padding: 0.5rem 0.9375rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem; }
 
 .modal {
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 100px;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: black;
-  background-color: rgba(0, 0, 0, 0.4); }
-  .modal #closeModal {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold; }
+  background-color: rgba(36, 29, 51, 0.8); }
+  .modal .close-modal {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5625rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    border-radius: 50%;
+    position: fixed;
+    top: 1.875rem;
+    right: 1.875rem; }
 
 .modal.active {
-  display: block; }
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
 
 .events-list {
   display: -webkit-box;
@@ -261,7 +292,7 @@ header {
     z-index: 111;
     background: -webkit-gradient(linear, left top, right top, from(#743ad5), to(#d53a9d));
     background: linear-gradient(to right, #743ad5, #d53a9d);
-    border-radius: inherit;
+    border-radius: 0.3125rem;
     opacity: 0; }
   .event-list-item .name {
     display: block;
@@ -270,7 +301,7 @@ header {
     margin-top: 1.25rem;
     text-align: center; }
   .event-list-item .date {
-    width: 50%;
+    width: 55%;
     display: block;
     font-size: 0.875rem;
     line-height: 1.2;

@@ -1,7 +1,23 @@
 .add-event-form {
-  background-color: #fefefe;
   margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+  padding-bottom: toRem(100);
+  width: 50%;
+  .event-name-input {
+    width: 40%;
+    padding: toRem(10);
+    border-radius: toRem(5);
+    margin-right: toRem(10);
+  }
+  .datepicker {
+    width: 30%;
+    padding: toRem(7);
+    border-radius: toRem(5);
+    color: $text-color;
+    margin-right: toRem(10);
+  }
+  .add-event {
+    padding: toRem(8) toRem(15);
+    border-radius: toRem(8);
+    font-size: toRem(14);
+  }
 }

@@ -5,25 +5,26 @@
   }
 }
 
-#openModal {
+.btn {
   border: toRem(4) solid $btn-color;
+  background-color: #fff;
+  transition: 0.5s ease;
+  color: $btn-color;
+  &:hover {
+    color: #fff;
+    background: $gradient;
+  }
+}
+
+.open-modal {
   width: toRem(60);
   height: toRem(60);
   border-radius: 50%;
-  background-color: #fff;
   position: fixed;
   right: toRem(30);
   bottom: toRem(30);
-  transition: 0.8s ease;
   .icon-calendar-plus-regular {
     font-size: toRem(25);
-    color: $btn-color;
-  }
-  &:hover {
-    background: $gradient;
-    .icon-calendar-plus-regular {
-      color: #fff;
-    }
   }
 }
 
@@ -34,7 +35,7 @@
   right: 0;
   top: 65%;
   text-align: center;
-  padding: 20px;
+  padding: toRem(20);
   box-sizing: border-box;
   color: #ffffff;
   opacity: 0;

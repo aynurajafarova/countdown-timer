@@ -38,7 +38,7 @@
     //   rgba(213, 58, 157, 0.9)
     // );
     background: $gradient;
-    border-radius: inherit;
+    border-radius: toRem(5);
     opacity: 0;
   }
   .name {
@@ -49,7 +49,7 @@
     text-align: center;
   }
   .date {
-    width: 50%;
+    width: 55%;
     @include display($b);
     font-size: toRem(14);
     line-height: 1.2;

@@ -1,10 +1,17 @@
 const datepicker = document.querySelector(".datepicker");
 const eventName = document.querySelector(".event-name-input");
-const addEventBtn = document.getElementById("addEvent");
+const addEventBtn = document.querySelector(".add-event");
 const eventsList = document.querySelector(".events-list");
 
 let events = [];
 let id = 1;
+
+
+// let today = new Date().toISOString();
+// console.log(datepicker.min);
+// datepicker.min=today;
+
+
 
 // calculate date
 const showDateAze = () => {
@@ -173,8 +180,8 @@ addEventBtn.addEventListener("click", (e) => {
 
 // add event modal
 const modal = document.querySelector(".modal");
-const openModal = document.getElementById("openModal");
-const closeModal = document.getElementById("closeModal");
+const openModal = document.querySelector(".open-modal");
+const closeModal = document.querySelector(".close-modal");
 
 openModal.addEventListener("click", () => {
   modal.classList.add("active");
@@ -191,3 +198,9 @@ window.onclick = function (event) {
     modal.classList.remove("active");
   }
 };
+
+// (function () {
+//   datepicker.datetimepicker({
+//     minDate: new Date(),
+//   });
+// }());
