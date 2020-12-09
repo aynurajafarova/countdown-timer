@@ -1,9 +1,11 @@
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: "Nunito Sans", sans-serif;
   background-color: $body-color;
   color: $text-color;
 }
-
 button {
   border: none;
   outline: none;

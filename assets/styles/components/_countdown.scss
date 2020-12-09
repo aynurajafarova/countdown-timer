@@ -1,0 +1,54 @@
+%common-size {
+  font-size: toRem(80);
+}
+
+%dots-style {
+  content: "";
+  background-color: white;
+  height: toRem(5);
+  width: toRem(5);
+  border-radius: 50%;
+  @include display($b);
+  position: absolute;
+  right: 0;
+}
+
+.countdown {
+  @include display($n);
+  color: white;
+  width: 80%;
+  ul {
+    width: 80%;
+    @include centered;
+    border: 1px solid #fff;
+    padding: toRem(20) toRem(0);
+    box-shadow: 0 toRem(3) toRem(9) #fff;
+    li {
+      font-size: toRem(20);
+      text-align: center;
+      position: relative;
+      padding: toRem(10) toRem(30);
+      span {
+        @include display($b);
+      }
+      .day,
+      .hour,
+      .minute,
+      .second {
+        @extend %common-size;
+      }
+      &:not(:last-child)::before {
+        @extend %dots-style;
+        top: 35%;
+      }
+      &:not(:last-child)::after {
+        @extend %dots-style;
+        top: 50%;
+      }
+    }
+  }
+}
+
+.countdown.active {
+  @include centered;
+}

@@ -1,4 +1,5 @@
 .add-event-form {
+  @include display($n);
   margin: auto;
   padding-bottom: toRem(100);
   width: 50%;
@@ -9,7 +10,7 @@
     margin-right: toRem(10);
   }
   .datepicker {
-    width: 30%;
+    width: 32%;
     padding: toRem(7);
     border-radius: toRem(5);
     color: $text-color;
@@ -20,4 +21,8 @@
     border-radius: toRem(8);
     font-size: toRem(14);
   }
+}
+
+.add-event-form.active {
+  @include display($b);
 }

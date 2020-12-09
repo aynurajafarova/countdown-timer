@@ -2,20 +2,23 @@ const datepicker = document.querySelector(".datepicker");
 const eventName = document.querySelector(".event-name-input");
 const addEventBtn = document.querySelector(".add-event");
 const eventsList = document.querySelector(".events-list");
+const addEventForm = document.querySelector(".add-event-form");
+const modal = document.querySelector(".modal");
+const addBtn = document.querySelector(".add-btn");
+const closeModal = document.querySelector(".close-modal");
+const counterDiv = document.querySelector(".countdown");
+const finishedDiv = document.querySelector(".finished");
+const days = document.querySelector(".day");
+const hours = document.querySelector(".hour");
+const minutes = document.querySelector(".minute");
+const seconds = document.querySelector(".second");
 
 let events = [];
 let id = 1;
 
-
-// let today = new Date().toISOString();
-// console.log(datepicker.min);
-// datepicker.min=today;
-
-
-
 // calculate date
-const showDateAze = () => {
-  let dateInput = datepicker.value && new Date(datepicker.value);
+const changeFormatAze = (formatDate) => {
+  let dateInput = formatDate;
   let hours = dateInput.getHours();
   let minutes = dateInput.getMinutes();
   const date = dateInput.getDate();
@@ -56,8 +59,8 @@ const showDateAze = () => {
   } ${hours}: ${minutes}`;
 };
 
-const showDate = () => {
-  let dateInput = datepicker.value && new Date(datepicker.value);
+const changeFormat = (formatDate) => {
+  let dateInput = formatDate;
   let hours = dateInput.getHours();
   let minutes = dateInput.getMinutes();
   const date = dateInput.getDate();
@@ -99,8 +102,7 @@ const showDate = () => {
 const addEvent = () => {
   const newEvent = {
     id: id++,
-    // date: showDateAze(),
-    date: showDate(),
+    date: new Date(datepicker.value),
     name: eventName.value,
   };
   events.push(newEvent);
@@ -110,8 +112,44 @@ const deleteEvent = (id) => {
   events = events.filter((item, index) => item.id != id);
 };
 
+const startCountdown = (id) => {
+  modal.classList.add("active");
+  counterDiv.classList.add("active");
+  events.forEach((item, index) => {
+    if (item.id == id) {
+      const eventDate = item.date;
+
+      const sec = 1000,
+        min = sec * 60,
+        hour = min * 60,
+        day = hour * 24;
+      const countDown = new Date(eventDate).getTime();
+      const interval = setInterval(() => {
+        let now = new Date().getTime();
+        let distance = countDown - now;
+        if (distance > 0) {
+          days.textContent = Math.floor(distance / day);
+          hours.textContent = Math.floor((distance % day) / hour);
+          minutes.textContent = Math.floor((distance % hour) / min);
+          seconds.textContent = Math.floor((distance % min) / sec);
+        } else if (distance < 0) {
+          counterDiv.classList.remove("active");
+          finishedDiv.classList.add("active");
+          clearInterval(interval);
+        }
+
+        closeModal.addEventListener("click", () => {
+          clearInterval(interval);
+        });
+      }, 1000);
+    }
+  });
+};
+
 const addEventItem = (item) => {
   const { id, date, name } = item;
+  const formatDate = changeFormat(date);
+
   const eventListItem = document.createElement("li");
   eventListItem.className = "event-list-item";
 
@@ -143,8 +181,10 @@ const addEventItem = (item) => {
   const countdownIcon = document.createElement("i");
   countdownIcon.className = "icon-calendar-alt-regular";
 
+  countdownBtn.addEventListener("click", () => startCountdown(id));
+
   eventListItem.id = id;
-  eventDate.textContent = date;
+  eventDate.textContent = formatDate;
   eventName.textContent = name;
 
   deleteBtn.appendChild(deleteIcon);
@@ -175,32 +215,29 @@ addEventBtn.addEventListener("click", (e) => {
   showEventsList();
   datepicker.value = "";
   eventName.value = "";
-  modal.classList.remove("active");
+  removeActive();
 });
 
-// add event modal
-const modal = document.querySelector(".modal");
-const openModal = document.querySelector(".open-modal");
-const closeModal = document.querySelector(".close-modal");
-
-openModal.addEventListener("click", () => {
+addBtn.addEventListener("click", () => {
   modal.classList.add("active");
+  addEventForm.classList.add("active");
   eventName.focus();
 });
 
 closeModal.addEventListener("click", () => {
-  modal.classList.remove("active");
+  removeActive();
 });
 
 // when the user clicks anywhere outside of the modal
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.classList.remove("active");
-  }
-};
+// window.onclick = function (event) {
+//   if (event.target == modal) {
+//     removeActive();
+//   }
+// };
 
-// (function () {
-//   datepicker.datetimepicker({
-//     minDate: new Date(),
-//   });
-// }());
+const removeActive = () => {
+  modal.classList.remove("active");
+  addEventForm.classList.remove("active");
+  counterDiv.classList.remove("active");
+  finishedDiv.classList.remove("active");
+};

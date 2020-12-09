@@ -1,13 +1,13 @@
 .modal {
   @include display($n);
   position: fixed;
-  z-index: 1;
+  z-index: 9999;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(36, 29, 51, 0.8);
+  background-color: rgba(36, 29, 51, 0.9);
   .close-modal {
     width: toRem(40);
     height: toRem(40);

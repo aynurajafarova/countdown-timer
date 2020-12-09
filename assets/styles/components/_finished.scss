@@ -1,0 +1,25 @@
+.finished {
+  @include display($n);
+  width: 50%;
+  height: 70%;
+  h3 {
+    width: 32%;
+    background: -webkit-linear-gradient(#743ad5, #d53a9d);
+    font-size: toRem(30);
+    color: #fff;
+    text-align: center;
+    padding: toRem(10) toRem(20);
+    border-radius: toRem(5);
+    margin: toRem(0) auto toRem(30);
+  }
+  img {
+    @include display($b);
+    width: 60%;
+    border-radius: toRem(5);
+    margin: 0 auto;
+  }
+}
+
+.finished.active {
+  @include display($b);
+}
